@@ -5,7 +5,7 @@ import string
 letter = string.ascii_letters
 number = string.digits
 
-#print(letter)
+#print(letter) to check if it is working
 
 #initial variable for the program
 old_and_young = {}
@@ -29,34 +29,41 @@ while True:
             #?loop for rules of age
             while True:
                 age = input("Please input the age: ")
-                
+                num_age = int(age)
                 if any(char in number for char in age):
-                    num_age = int(age)
                     if num_age < 130 and num_age >= 0:
                             break
+                    #error message
                     else:
                         print("Ages between 0 to 130 only.")
                         continue
+                #error message
                 else:
                      print("Only numbers are allowed.")
                      continue
-                
+            
+            #an array of the name and age
+            old_and_young[name] = {
+                "age" : num_age
+            }
+
+            print(old_and_young[name])
+
+            #new entries - anoth is short for 'another'
+            another_entry = input("Another entry?: ")
+            #stop the loop
+            break
+
         except:
             print("There's something wrong...")
 
+    if another_entry == "n":
+        print("complete!") #test
+        #print the name and age of oldest
+        break #stopping the loop
 
-    
-
-    
-
-#an array of the name and age
-            
-#print the name and age of oldest
-
-#new entries
-
-#stopping the loop
-
+    elif another_entry != "y":
+        print("Please only type 'y' or 'n' in the input.")
 
 
 
