@@ -5,10 +5,14 @@ import string
 letter = string.ascii_letters
 number = string.digits
 
-#print(letter) to check if it is working
+#print(letter) #to check if it is working
+
+#create a list to handle all
+dicts = []
 
 #initial variable for the program
-old_and_young = {}
+name_and_age = {}
+
 
 #loop for user inputs and to break 'yes' and 'no' reentry
 while True:
@@ -30,41 +34,48 @@ while True:
             while True:
                 age = input("Please input the age: ")
                 num_age = int(age)
+                
                 if any(char in number for char in age):
-                    if num_age < 130 and num_age >= 0:
-                            break
+                    if num_age < 130 and age != letter and num_age >= 0:
+                        break #stop the loop
+
                     #error message
                     else:
                         print("Ages between 0 to 130 only.")
                         continue
                 #error message
                 else:
-                     print("Only numbers are allowed.")
-                     continue
-            
+                    print("Only numbers are allowed.")
+                    continue
+                
             #an array of the name and age
-            old_and_young[name] = {
+            name_and_age[name] = {
+                "name" : name,
                 "age" : num_age
             }
+            
+            print(name_and_age[name])
+    
+            dicts.append(name_and_age)
 
-            print(old_and_young[name])
-
-            #new entries - anoth is short for 'another'
+            #new entries
             another_entry = input("Another entry?: ")
-            #stop the loop
             break
-
         except:
             print("There's something wrong...")
 
     if another_entry == "n":
+        print(dicts)
         print("complete!") #test
-        #print the name and age of oldest
         break #stopping the loop
 
     elif another_entry != "y":
         print("Please only type 'y' or 'n' in the input.")
+        continue
 
+   
+    
+        
 
 
 
