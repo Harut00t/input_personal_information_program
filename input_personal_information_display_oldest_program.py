@@ -61,19 +61,21 @@ while True:
             print("There's something wrong...")
 
     if another_entry == "n":
+        # for entry in name_and_age.values():
+        # print(f"Name: {entry['name']}, Age: {entry['age']}") #a piece of code that prints the name and age
+        age_compare = [entry['age'] for entry in name_and_age.values()]
+        highest_age = max(age_compare)
+
+        oldest_people = [] #To get the names of the highest age
+
         for entry in name_and_age.values():
-            # print(f"Name: {entry['name']}, Age: {entry['age']}") #a piece of code that prints the name and age
-            age_compare = [entry['age'] for entry in name_and_age.values()]
-            highest_age = max(age_compare)
-
-            oldest_person = None #To get the name of the highest age
-
-            for entry in name_and_age.values():
-                if entry['age'] == highest_age:
-                    oldest_person = entry['name']
-                    break
-
-        print(f"the oldest person is {oldest_person}, {highest_age}") #oldest person
+            if entry['age'] == highest_age:
+                oldest_people.append(entry['name'])
+                
+        if len(oldest_people) == 1:
+            print(f"the oldest person is {oldest_people[0]}, aged {highest_age}") #oldest person
+        else:
+            print(f"the oldest person are {', '.join(oldest_people)}, both aged {highest_age}") #oldest people
         break #stopping the loop
 
     elif another_entry != "y":
